@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIKZ UNBAND WHATSAPP</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #111;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        .title {
+            font-size: 20px; /* Diubah jadi 20px sesuai permintaan */
+            font-weight: 900; /* Tetap super bold */
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 15px 0 5px;
+            font-size: 16px;
+        }
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: linear-gradient(to right, #ff00ff, #ff0000);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Logo WhatsApp resmi -->
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+        
+        <!-- Judul dengan ukuran 20px dan font bold -->
+        <div class="title">𝗗𝗶𝗸𝘇 𝗨𝗻𝗯𝗮𝗻 𝗪𝗵𝗮𝘁𝘀𝗮𝗽𝗽</div>
+        
+        <label>Nomor :</label>
+        <input type="text" id="nomor" placeholder="62xxxxxxxxxx">
+        
+        <label>Pilih Opsi Band</label>
+        <select id="opsi">
+            <option value="PERMA">PERMA</option>
+            <option value="SPAM">SPAM</option>
+        </select>
+        
+        <button class="btn" onclick="unban()">UNBANNED</button>
+        
+        <div class="footer">
+            Compose terbuka.<br>
+            VIP METODE UNBANNED APPS
+        </div>
+    </div>
+
+    <script>
+        function unban() {
+            let nomor = document.getElementById('nomor').value.trim();
+            if (!nomor) {
+                alert('Masukkan nomor WhatsApp terlebih dahulu!');
+                return;
+            }
+            if (!nomor.startsWith('62')) {
+                nomor = '62' + nomor.replace(/^0+/, '');
+            }
+            const fullNomor = '+' + nomor;
+
+            const opsi = document.getElementById('opsi').value;
+
+            let text = '';
+            if (opsi === 'PERMA') {
+                text = `Здравствуйте, команда WhatsApp!
+
+Я являюсь пользователем WhatsApp, и мой номер телефона (${nomor}) был заблокирован. Эта блокировка стала для меня полной неожиданностью и доставила значительные неудобства.
+
+Я уверен, что не нарушал правила использования WhatsApp. Если с моего аккаунта были зафиксированы какие-либо действия, прошу сообщить мне о причине блокировки, чтобы я мог понять ситуацию и избегать подобных ошибок в будущем.
+
+Прошу вас как можно скорее пересмотреть блокировку моего номера и восстановить доступ к аккаунту. Я искренне ценю WhatsApp и готов полностью соблюдать все правила сервиса.
+
+Заранее благодарю за внимание и надеюсь на скорое решение.
+
+С уважением,
+[${nomor}]`;
+            } else { // SPAM
+                text = `Kepada Tim Dukungan WhatsApp, saya adalah pengguna WhatsApp dengan nomor ${fullNomor}. Saya baru saja menerima notifikasi bahwa akun saya diblokir secara permanen. Namun, saya merasa tidak melakukan pelanggaran terhadap kebijakan WhatsApp. Mohon pertimbangkan untuk meninjau kembali pemblokiran ini dan memberikan penjelasan lebih lanjut. Terima kasih atas perhatian dan bantuannya.`;
+            }
+
+            if (confirm('Kirim lewat Gmail APK (OK) atau salin teks untuk kirim manual via WhatsApp/support (Cancel)?')) {
+                const subject = encodeURIComponent('Permohonan Tinjau Ulang Blokir Akun WhatsApp ' + fullNomor);
+                const body = encodeURIComponent(text + '\n\n');
+                const gmailUri = `googlegmail://co?subject=\( {subject}&body= \){body}&to=support@whatsapp.com`;
+                
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = gmailUri;
+                document.body.appendChild(iframe);
+                
+                setTimeout(() => {
+                    window.location.href = `mailto:support@whatsapp.com?subject=\( {subject}&body= \){body}`;
+                }, 1000);
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Teks berhasil disalin! Buka WhatsApp/support dan kirim manual.');
+                }).catch(() => {
+                    alert('Gagal salin teks. Copy manual:\n\n' + text);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
